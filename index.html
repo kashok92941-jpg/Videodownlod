@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>HDvideodownload — Demo (Frontend)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">
+    <img src="logo.svg" alt="logo" class="logo">
+    <div>
+      <h1>HDvideodownload</h1>
+      <p class="subtitle">YouTube · Instagram · Facebook — Demo UI</p>
+    </div>
+  </div>
+  <nav>
+    <button id="btnLogin">Login</button>
+    <button id="btnSignup">Signup</button>
+  </nav>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h2>वीडियो लिंक पेस्ट करें</h2>
+    <input id="videoUrl" placeholder="https://www.youtube.com/watch?v=..." />
+    <div class="row">
+      <button id="playBtn">वीडियो चलाएँ</button>
+      <button id="embedBtn">सामान्य Embed</button>
+    </div>
+    <div id="playerArea" class="player-area" aria-live="polite"></div>
+    <p class="note">ध्यान: यह frontend-only demo है — कुछ सेवाएँ cross-origin reasons से embed न कर सकें।</p>
+  </section>
+
+  <section class="card small">
+    <h3>अपनी MP4 फ़ाइल प्ले करें (Local preview)</h3>
+    <input id="fileInput" type="file" accept="video/*" />
+    <div id="localPlayer" class="player-area"></div>
+    <p class="note">यह सिर्फ आपका local preview है — कोई upload नहीं होता।</p>
+  </section>
+
+  <section class="card small">
+    <h3>क्या यह साइट काम कर रही है?</h3>
+    <p>अगर embed blocked आये तो वो third-party site की policy की वजह से है — यह demo UI ठीक से बना हुआ है।</p>
+  </section>
+</main>
+
+<!-- Login/Signup modal -->
+<div id="authModal" class="modal" aria-hidden="true">
+  <div class="modal-content">
+    <h3 id="authTitle">Login</h3>
+    <input id="authName" placeholder="Name (signup only)" style="display:none"/>
+    <input id="authEmail" placeholder="Email" />
+    <input id="authPass" placeholder="Password" type="password" />
+    <div class="row">
+      <button id="authSubmit">Submit</button>
+      <button id="authClose">Close</button>
+    </div>
+    <p id="authStatus" class="small"></p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

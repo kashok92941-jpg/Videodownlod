@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="hi">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Login — HDvideodownload</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><img src="logo.svg" class="logo"><h1>HDvideodownload</h1></div>
+</header>
+<main class="wrap">
+  <div class="card">
+    <h2>Login (Local demo)</h2>
+    <input id="email" placeholder="Email">
+    <input id="password" placeholder="Password" type="password">
+    <div class="row">
+      <button id="loginBtn">Login</button>
+      <a href="signup.html">Signup</a>
+    </div>
+    <p id="status" class="small"></p>
+  </div>
+</main>
+<script>
+document.getElementById('loginBtn').onclick = function(){
+  const email = document.getElementById('email').value.trim();
+  const pass = document.getElementById('password').value;
+  const users = JSON.parse(localStorage.getItem('hd_users')||'[]');
+  const found = users.find(u=>u.email===email && u.password===pass);
+  if(!found){ document.getElementById('status').textContent='Invalid credentials'; return; }
+  localStorage.setItem('hd_user', JSON.stringify({name:found.name,email:found.email}));
+  location.href='index.html';
+}
+</script>
+</body>
+</html>

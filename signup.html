@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="hi">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Signup — HDvideodownload</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><img src="logo.svg" class="logo"><h1>HDvideodownload</h1></div>
+</header>
+<main class="wrap">
+  <div class="card">
+    <h2>Signup (Local demo)</h2>
+    <input id="name" placeholder="Name">
+    <input id="email" placeholder="Email">
+    <input id="password" placeholder="Password" type="password">
+    <div class="row">
+      <button id="signupBtn">Create account</button>
+      <a href="index.html">Back</a>
+    </div>
+    <p id="status" class="small"></p>
+  </div>
+</main>
+<script>
+document.getElementById('signupBtn').onclick = function(){
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const pass = document.getElementById('password').value;
+  if(!name||!email||!pass){ alert('सभी फील्ड भरें'); return; }
+  const users = JSON.parse(localStorage.getItem('hd_users')||'[]');
+  if(users.find(u=>u.email===email)){ document.getElementById('status').textContent='Email already used'; return; }
+  users.push({name,email,password:pass});
+  localStorage.setItem('hd_users', JSON.stringify(users));
+  localStorage.setItem('hd_user', JSON.stringify({name,email}));
+  location.href='index.html';
+}
+</script>
+</body>
+</html>
